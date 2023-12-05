@@ -49,6 +49,8 @@ function UserRoutes(app) {
     const { username, password } = req.body;
     const currentUser = await dao.findUserByCredentials(username, password);
     req.session['currentUser'] = currentUser;
+    console.log("signin request")
+    console.log(req.session['currentUser'])
     res.json(currentUser);
 
   };
@@ -58,6 +60,8 @@ function UserRoutes(app) {
   };
 
   const account = async (req, res) => { 
+    console.log("account request")
+    console.log(req.session['currentUser'])
     res.json(req.session['currentUser']);
 };
 
